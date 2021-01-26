@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CryptoService } from './service/crypto.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'demo-crypto';
+export class AppComponent implements OnInit {
+  key = 'AAAAtXzwM8wXAPA91bEywjBdOLm8JPJe';
+  encryptedText = 'eyJpdiI6InhyU0o0dmIvd1AyalZ4V0VCNERkNXc9PSIsInZhbHVlIjoiQXJvQ29KWkZDQk1rbklpbnpFRDAxV1BqUmtDNm96ZDVKT3JWa29xTWdncEFpVmt3bWtTSVBFNS9nZ0k0OEFrbkpST1BuTy9DQWdvR0ZocEFyQ241SEN2Z1dKTTNpRUNqZloraFRtRExtYUZvcmtwMjdjSTdZUGhUSGdOdm9NRUxDUFhqdUNIR0RjTnRPTFFJZnk4cndIalJMOHlFcFFXS2ppWEduV1Q3OGszNkZLd1BBZEtUSjZwQzFFWWVMMFhiMWliZzAxbkljeVZpK2tKVWRCTi9LT0o5czlPbXRHcWRnWVMvWGk3Qmd0RkpMZGxhREFBc2t3ajFJV21ZOUlla0w0anhxRGRPOXhTbFFqT201U0xZSFRLWVJFQnFYYm5ES3hEQ2ZzVUNadUprVHZENjN4ZzdxMEludThVSG45ejlmUTlWR0JlZVBkVmZXYjBHWGdGRE5pODZ5aDlqOXZmZjlYOUxFeHFJa1VZamVySEpBb2h0eXNTdXNocTV2d1VOUklrTks2Q2FreWRJeEJneWdRQ2pFYk02WU5INnU2Q1YyWVlGTmdOVWRCVFRSMHgyOCtXb1FmMnF5OWt0UDk0aVpmaElhMnZjRHMzSmZiUCtOek4zTXQ5VXRDbE5SdE1MbVFFYkxVUWROUWEvSFZTQkR0WVpJVTNkTnMvbmZXS21hdWdYR2RJRzQyUnFtN0JJUTliYmFhM1ZGRlExQW92RTlhbWZFT2lFWVJJWWRRZTcrNi9oUTI2clZITEViaytuRE04VnhhdEUwNTR5MVVqUERuVTFsOGEzU2V4RUNTaWR2OWw4Z0tGcDhQK2FEdzIvekt4VHQ3ZDE3eDR4V202bnBzTWE2eENpWWloSDZRTUxZS1loSmdJVFZqMWRsc1hwb2hhYXg4a3IrY0gvSDdLaytTK09vQkc2dHQ1ZS9mRGFwbW83eDgwd0E5Mm9oYVFiZ08vblMwMlZzQzhwV0o5dWNIbFA1TnlCaFRQSTdCa2h4RUJ4eEZzb3VWUnZDbEptRkt4aElWSTIxS29CU3pyOHVBcU1HMGlmOGYwb29JMUNJaUs3Q3lFMUxYMHFjNnl4b25mVzRqV2NRM3QzS2d4NDBkWmhNbUpwbXdwTUNHMVdCU0dDek9pLzhhRXBwSDNQdGR1MW5RMSs1K1p4Mnp6NkVTVFk2YkpaRlhpTGVpSlI5Z25BRWZDZTM1MlRxWkVuSnQ5L0hQNXFFelROTUhMWUNLSElkODgrZEt2dEo5akNWakFGOXhmMUM1R2tzSXgrUWFqUW1UZithZWF5SmNMR3pHNEwwOTRFWEhXdGZDamZoTWFXMUVoZ1Jzd2tKTU1pSG1PL1RHNUdFYU0yVjMrd00ySGtGS2NaMXFJb3VFRldLbEJicFZicE5pQlpCOGh6VHdsaFVldFdhSUtYWUxSUDRpL2xQQjRMelJPSHdySlRTTGtmREFsaGpJZlV6SnQzS0FyVUxFQ1c1d3h3bjhoK3hqOVpWRDFPQ2ZaRlVxY1hkRHpDZms3d2c5LzBOWnpwcDRyWnBWN2RQeGpXSzhNaHBCb1VRRVlaeW0rNW1HNXhXSXJXQnE1K3krb0x4WDFDQ0FHZ1lWZXd3TFEyRVZ1WG5ySDJpOXVuSFZ1ZHNjbnJWVEZVTCtQb0RDTmxhRy9kM01idjUrT1hneTA9IiwibWFjIjoiOTE5MWNhNWEyNzA1YmJhNjg0YzBiNGNiNzI3YTdkMTUzMDk2M2M4YTJlNzFlNzZiYmJlMDliNGMxZmQxZmY3OSJ9';
+  encrypted;
+  decrypted;
+
+  constructor(private cryptoService: CryptoService) {}
+
+  ngOnInit() {
+    // this.encrypted = this.cryptoService.set(this.key, 'password@123456');
+    this.decrypted = this.cryptoService.get(this.key, this.encryptedText);
+
+    // console.log('%c Encrypted', 'background-color: white; color: red; font-weight: bold; font-size: 15px;', this.encrypted);
+    console.log('%c Decrypted', 'background-color: white; color: red; font-weight: bold; font-size: 15px;', this.decrypted);
+  }
 }
